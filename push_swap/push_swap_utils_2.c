@@ -45,3 +45,51 @@ void	error(char *src)
 	write (2, "Error\n", 6);
 	free(src);
 }
+
+int	ft_verif_test(int len_chunk, int *tab_a, int *tab_b, int len_a)
+{
+	int verif;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < len_a && i < len_chunk)
+	{
+		j += tab_a[i];
+		i++;
+	}
+	verif = j / len_chunk;
+	if (tab_b[0] > verif)
+		return (1);
+	return (0);
+}
+
+int	*ft_sort_b(int *tab_b, int *tab_a, int len, int len_chunk, int len_a)
+{
+	int	i;
+	int	mid_len;
+
+	i = 1;
+	mid_len = len / 2;
+	if (i <= mid_len)
+	{
+		if (tab_b[0] < tab_b[1])
+		{
+			tab_b = ft_swap(tab_b, 'b', len);
+		}
+		if (len > 2 && ft_verif_test(len_chunk, tab_a, tab_b, len_a))
+			tab_b = ft_reverse(tab_b, 'b', len);
+	}
+	i = len - 1;
+	if(i > mid_len)
+	{
+		if (tab_b[len - 2] > tab_b[len - 1])
+		{
+			tab_b = ft_rotate(tab_b, 'b', len);
+			tab_b = ft_swap(tab_b, 'b', len);
+			tab_b = ft_reverse(tab_b, 'b', len);
+		}
+	}
+	return (tab_b);
+}

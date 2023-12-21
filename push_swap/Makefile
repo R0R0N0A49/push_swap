@@ -16,14 +16,14 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	@$(CC) $(CFLAG) -o $(NAME) $(OBJS)
-	@echo ${GREEN}"##Successful compilation##"
+	@echo ${GREEN}"--Successful compilation--"
 clean:
 	@clear
 	@$(RM) $(OBJS)
-	@echo ${BLUE}"#######Files clean########\n"
+	@echo ${BLUE}"-------Files clean--------\n"
 fclean : clean
 	@$(RM) $(NAME)
-	@echo ${CYAN}"########Name clean########\n"
+	@echo ${CYAN}"--------Name clean--------\n"
 re: fclean $(NAME)
 
 .PHONY: clean fclean re all

@@ -12,33 +12,24 @@
 
 #include "push_swap.h"
 
-int	*ft_rotate_a(int *src, char c)
+int	*ft_rotate(int *src, char c, int len)
 {
-	int	*result;
-	int	len;
+	int	tmp;
 	int	i;
-	int	j;
 
-	len = ft_len_tab(src);
-	result = malloc ((len + 1) * sizeof(int));
-	if (!result)
-		return (0);
+	tmp = src[0];
 	i = 1;
-	j = 0;
 	while (i < len)
 	{
-		result[j] = src[i];
+		src[i - 1] = src[i];
 		i++;
-		j++;
 	}
-	result[j] = src[0];
-	result[len] = 0;
-	free(src);
+	src[len - 1] = tmp;
 	ft_printf("r%c\n", c);
-	return (result);
+	return (src);
 }
 
-int	*ft_rotate_b(int *src)
+/* int	*ft_rotate_b(int *src)
 {
 	int	*result;
 	int	len;
@@ -61,7 +52,7 @@ int	*ft_rotate_b(int *src)
 	free(src);
 	ft_printf("rb\n");
 	return (result);
-}
+} */
 
 int	*ft_reverse(int *src, char c, int len)
 {

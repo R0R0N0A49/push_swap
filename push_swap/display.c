@@ -22,7 +22,7 @@ void	ft_display(int	*tab_a, int	*tab_b, int len_a, int len_b)
 	ft_printf("\n_______________________________________\n\n");
 	while (i < len_a || j < len_b)
 	{
-		if ((i >= len_a && len_a >= 0) || (j >= len_b && len_a <= 0))
+		if ((i > len_a && len_a >= 0) || (j > len_b && len_a <= 0))
 			ft_printf("%d\t%d\n", tab_a[i], tab_b[j]);
 		else if (len_a > 0)
 			ft_printf("%d\t \n", tab_a[i]);

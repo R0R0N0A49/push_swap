@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	*ft_push(int *src1, int *src2, char c, int len)
+int	*ft_push(int *src1, int *src2, int len, char c)
 {
 	int	*result;
 	int	i;
@@ -26,8 +26,7 @@ int	*ft_push(int *src1, int *src2, char c, int len)
 	result[j++] = src2[0];
 	while (i < len)
 		result[j++] = src1[i++];
-	if (src1)
-		free(src1);
+	free(src1);
 	ft_printf("p%c\n", c);
 	return (result);
 }
