@@ -16,7 +16,7 @@ int	ft_chunk(int len)
 {
 	if (len > 99)
 		return (len / 8);
-	else if (len > 8)
+	else if (len > 10)
 		return (len / 4);
 	return (len);
 }
@@ -28,21 +28,27 @@ void	ft_push_swap(int *tab_a, int len_a)
 	int	len_chunk;
 	int	chunk;
 	int	i;
-
+/* 	int	mid; */
+/* 	mid = ft_average(tab_a, len_chunk, len_a); */
 	len_b = 0;
 	chunk = 0;
 	tab_b = NULL;
 	len_chunk = ft_chunk(len_a);
-	i = 1;
-	while (len_a > 0  /*&& ft_verif_order(tab_a, len_a, len_b, 1) */)
+	i = 0;
+	while (len_a > 0)
 	{
 		while (i < len_chunk && 0 < len_a)
 		{
 			tab_b = ft_push(tab_b, tab_a, len_b++, 'b');
 			tab_a = ft_malloc_push(tab_a, len_a--);
-			tab_b = ft_sort_b(tab_b, tab_a, len_b, len_chunk, len_a);
+			if (len_b > 2 && tab_b[0] % 2 != 0)
+				tab_b = ft_rotate(tab_b, 'b', len_b);
 			i++;
 		}
+		while (ft_verif_revers(tab_b, len_b) >= 1)
+			tab_b = ft_sort_2(tab_b, len_b);
+		while (ft_verif_revers(tab_b, len_b) <= -1)
+			tab_b = ft_sort_1(tab_b, len_b);
 		i = 0;
 		chunk++;
 	}

@@ -12,9 +12,14 @@
 
 #include "push_swap.h"
 
-int	*ft_swap(int *src, char c, int len)
+int	*ft_swap(int *src, char c)
 {
-	int	*result;
+	int	tmp;
+
+	tmp = src[0];
+	src[0] = src[1];
+	src[1] = tmp;
+	/* int	*result;
 	int	i;
 
 	result = malloc (len * sizeof(int));
@@ -28,7 +33,7 @@ int	*ft_swap(int *src, char c, int len)
 		result[i] = src[i];
 		i++;
 	}
-	free(src);
+	free(src); */
 	ft_printf("s%c\n", c);
-	return (result);
+	return (src);
 }

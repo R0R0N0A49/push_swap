@@ -29,31 +29,6 @@ int	*ft_rotate(int *src, char c, int len)
 	return (src);
 }
 
-/* int	*ft_rotate_b(int *src)
-{
-	int	*result;
-	int	len;
-	int	i;
-	int	j;
-
-	len = ft_len_tab(src);
-	result = malloc (len * sizeof(int));
-	if (!result)
-		return (0);
-	i = 1;
-	j = 0;
-	while (i < len)
-	{
-		result[j] = src[i];
-		i++;
-		j++;
-	}
-	result[j] = src[0];
-	free(src);
-	ft_printf("rb\n");
-	return (result);
-} */
-
 int	*ft_reverse(int *src, char c, int len)
 {
 	int	tmp;
@@ -71,30 +46,3 @@ int	*ft_reverse(int *src, char c, int len)
 	ft_printf("rr%c\n", c);
 	return (src);
 }
-/* 
-int	*ft_reverse_b(int *src)
-{
-	int	*result;
-	int	len;
-	int	i;
-	int	j;
-
-	len = ft_len_tab(src);
-	result = malloc ((len) * sizeof(int));
-	if (!result)
-		return (0);
-	i = 1;
-	j = 0;
-	while (i < len)
-	{
-		result[i] = src[j];
-		i++;
-		j++;
-	}
-	result[0] = src[j];
-	result[len] = 0;
-	free(src);
-	ft_printf("rrb\n");
-	return (result);
-}
- */

@@ -34,24 +34,25 @@ int	ft_verif_order(int *src, int len_a, int len_b, int secu)
 		return (0);
 }
 
-int	ft_verif_revers_order(int *src, int len)
+int	ft_verif_revers(int *src, int len)
 {
+//doit verifier si b en possition buterfly
+//en verifiant les moitier
 	int	i;
-	int	j;
 
-	if (!src)
-		return (0);
-	j = 1;
-	i = 0;
-	while (j < len)
+	i = 1;
+	while (len > 2 && i <= len / 2)
 	{
-		if (src[i] < src[j])
-			return (1);
+		if (src[i] > src[i - 1])
+			return (i);
 		i++;
-		j++;
 	}
-	if (len == 1)
-		return (1);
+	while(len > 2 && i < len)
+	{
+		if (src[i] < src[i - 1])
+			return (i * -1);
+		i++;
+	}
 	return (0);
 }
 
