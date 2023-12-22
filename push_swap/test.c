@@ -76,7 +76,10 @@ int	*ft_sort_1(int *tab_b, int len)
 	tab_b = ft_rotate(tab_b, 'b',len);
 	while (j > 0)
 	{
+		if (tab_b[1] < tab_b[0])
+			tab_b = ft_swap(tab_b, 'b');
 		tab_b = ft_rotate(tab_b, 'b',len);
+		
 		j--;
 	}
 	return (tab_b);

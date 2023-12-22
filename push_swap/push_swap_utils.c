@@ -51,11 +51,6 @@ int	*ft_malloc_push(int *src, int len)
 	int	i;
 	int	j;
 
-	if ((len - 1) == 0)
-	{
-		free(src);
-		return (NULL);
-	}
 	result = malloc (len * sizeof(int));
 	if (!result)
 		return (NULL);

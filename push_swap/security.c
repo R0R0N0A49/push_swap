@@ -12,26 +12,22 @@
 
 #include "push_swap.h"
 
-int	ft_verif_order(int *src, int len_a, int len_b, int secu)
+void	ft_order(int **tab_a, int **tab_b, int len_a, int len_b)
 {
-	int	i;
-	int	j;
-
-	if (!src)
-		return (0);
-	j = 1;
-	i = 0;
-	while (j < len_a)
+	while (len_b > 0)
 	{
-		if (src[i] > src[j])
-			return (1);
-		i++;
-		j++;
+			if (len_b >= 2 && tab_b[0][len_b - 1] > tab_b[0][0])
+			{
+				*tab_b = ft_reverse(*tab_b, 'b', len_b);
+				*tab_a = ft_push(*tab_a, *tab_b, len_a++, 'a');
+				*tab_b = ft_malloc_push(*tab_b, len_b--);
+			}
+			else
+			{
+				*tab_a = ft_push(*tab_a, *tab_b, len_a++, 'a');
+				*tab_b = ft_malloc_push(*tab_b, len_b--);
+			}
 	}
-	if (secu == 1 && len_b)
-		return (1);
-	else
-		return (0);
 }
 
 int	ft_verif_revers(int *src, int len)
