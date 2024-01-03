@@ -48,7 +48,7 @@ void	ft_push_swap(int *tab_a, int len_a)
 		{
 			tab_b = ft_push(tab_b, tab_a, len_b++, 'b');
 			tab_a = ft_malloc_push(tab_a, len_a--);
-			if (len_b > 2 && tab_b[0] % 2)
+			if (len_b > 2 && tab_b[0] > tab_b[len_b - 1])
 				tab_b = ft_rotate(tab_b, 'b', len_b);
 			i++;
 		}
