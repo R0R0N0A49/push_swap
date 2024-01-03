@@ -27,6 +27,6 @@ int	*ft_push(int *src1, int *src2, int len, char c)
 	while (i < len)
 		result[j++] = src1[i++];
 	free(src1);
-	ft_printf("p%c\n", c);
+		ft_printf("p%c\n", c);
 	return (result);
 }

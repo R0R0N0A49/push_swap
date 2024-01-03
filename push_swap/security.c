@@ -12,42 +12,53 @@
 
 #include "push_swap.h"
 
-void	ft_order(int **tab_a, int **tab_b, int len_a, int len_b)
+int	ft_order(int *tab_a, int len_a, int len_b, int secu)
 {
-	while (len_b > 0)
+	int	i;
+
+	i = 0;
+	while (i + 1 < len_a)
 	{
-			if (len_b >= 2 && tab_b[0][len_b - 1] > tab_b[0][0])
-			{
-				*tab_b = ft_reverse(*tab_b, 'b', len_b);
-				*tab_a = ft_push(*tab_a, *tab_b, len_a++, 'a');
-				*tab_b = ft_malloc_push(*tab_b, len_b--);
-			}
-			else
-			{
-				*tab_a = ft_push(*tab_a, *tab_b, len_a++, 'a');
-				*tab_b = ft_malloc_push(*tab_b, len_b--);
-			}
+		if (tab_a[i] > tab_a[i + 1])
+			return (1);
+		i++;
 	}
+	if (len_b && secu == 0)
+		return (1);
+	return (0);
+}
+
+int	ft_order_reverse(int *tab_b, int len_b)
+{
+	int	i;
+
+	i = 0;
+	while (i + 1 < len_b)
+	{
+		if (tab_b[i] < tab_b[i + 1])
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int	ft_verif_revers(int *src, int len)
 {
-//doit verifier si b en possition buterfly
-//en verifiant les moitier
 	int	i;
 
 	i = 1;
-	while (len > 2 && i <= len / 2)
+	while (len > 2 && i < len / 2)
 	{
 		if (src[i] > src[i - 1])
 			return (i);
 		i++;
 	}
-	while(len > 2 && i < len)
+	len--;
+	while (len - 1 >= i)
 	{
-		if (src[i] < src[i - 1])
-			return (i * -1);
-		i++;
+		if (src[len] < src[len - 1])
+			return (len * -1);
+		len--;
 	}
 	return (0);
 }
