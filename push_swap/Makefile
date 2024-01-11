@@ -1,8 +1,8 @@
 NAME=push_swap
 CC=cc
 CFLAG= -Werror -Wall -Wextra -g
-SRCS= display.c ft_push.c ft_rotate.c ft_split_int.c ft_swap.c push_swap.c push_swap_utils.c push_swap_utils_2.c security.c\
-	ft_printf/ft_printf.c ft_printf/ft_printf_utils.c test.c
+SRCS= ft_push.c ft_rotate.c ft_split_int.c ft_swap.c push_swap.c push_swap_utils.c push_swap_utils_2.c security.c\
+	ft_printf/ft_printf.c ft_printf/ft_printf_utils.c 
 OBJS=$(SRCS:.c=.o)
 RM=rm -f
 

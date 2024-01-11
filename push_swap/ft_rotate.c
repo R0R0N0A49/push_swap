@@ -12,37 +12,51 @@
 
 #include "push_swap.h"
 
-int	*ft_rotate(int *src, char c, int len)
+void	ft_rotate(int **src, char c, int len)
 {
 	int	tmp;
 	int	i;
 
-	tmp = src[0];
+	tmp = src[0][0];
 	i = 1;
 	while (i < len)
 	{
-		src[i - 1] = src[i];
+		src[0][i - 1] = src[0][i];
 		i++;
 	}
-	src[len - 1] = tmp;
-	ft_printf("r%c\n", c);
-	return (src);
+	src[0][len - 1] = tmp;
+	if (c != '\0')
+		ft_printf("r%c\n", c);
 }
 
-int	*ft_reverse(int *src, char c, int len)
+void	ft_rr(int **tab_a, int **tab_b, int len_a, int len_b)
+{
+	ft_rotate(&tab_a[0], '\0', len_a);
+	ft_rotate(&tab_b[0], '\0', len_b);
+	ft_printf("rr\n");
+}
+
+void	ft_reverse(int **src, char c, int len)
 {
 	int	tmp;
 	int	i;
 
-	tmp = src[0];
-	src[0] = src[len - 1];
+	tmp = src[0][0];
+	src[0][0] = src[0][len - 1];
 	i = len - 1;
 	while (i > 1)
 	{
-		src[i] = src[i - 1];
+		src[0][i] = src[0][i - 1];
 		i--;
 	}
-	src[i] = tmp;
-	ft_printf("rr%c\n", c);
-	return (src);
+	src[0][i] = tmp;
+	if (c != '\0')
+		ft_printf("rr%c\n", c);
+}
+
+void	ft_rrr(int **tab_a, int **tab_b, int len_a, int len_b)
+{
+	ft_reverse(&tab_a[0], '\0', len_a);
+	ft_reverse(&tab_b[0], '\0', len_b);
+	ft_printf("rrr\n");
 }

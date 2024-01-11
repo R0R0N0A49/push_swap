@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_order(int *tab_a, int len_a, int len_b, int secu)
+int	ft_order(int *tab_a, int len_a)
 {
 	int	i;
 
@@ -20,45 +20,30 @@ int	ft_order(int *tab_a, int len_a, int len_b, int secu)
 	while (i + 1 < len_a)
 	{
 		if (tab_a[i] > tab_a[i + 1])
-			return (1);
+			return (0);
 		i++;
 	}
-	if (len_b && secu == 0)
-		return (1);
-	return (0);
+	return (1);
 }
 
-int	ft_order_reverse(int *tab_b, int len_b)
+int	ft_verif_repeat(int *tab_a, int len_a)
 {
 	int	i;
+	int	j;
 
+	j = 1;
 	i = 0;
-	while (i + 1 < len_b)
+	while (len_a > 1 && i < len_a - 1)
 	{
-		if (tab_b[i] < tab_b[i + 1])
+		if (tab_a[i] == tab_a[j])
 			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_verif_revers(int *src, int len)
-{
-	int	i;
-
-	i = 1;
-	while (len > 2 && i < len / 2)
-	{
-		if (src[i] > src[i - 1])
-			return (i);
-		i++;
-	}
-	len--;
-	while (len - 1 >= i)
-	{
-		if (src[len] < src[len - 1])
-			return (len * -1);
-		len--;
+		else if (j < len_a - 1)
+			j++;
+		else
+		{
+			i++;
+			j = i + 1;
+		}
 	}
 	return (0);
 }
@@ -72,8 +57,14 @@ int	ft_verif_int(char *src)
 	len = ft_strlen(src);
 	while (i < len)
 	{
-		if ((src[i] >= '0' && src[i] <= '9')
-			|| src[i] == '-' || src[i] == '+' || src[i] == ' ')
+		if ((src[i] >= '0' && src[i] <= '9') && src[i + 1] != '+'
+			&& src[i + 1] != '-')
+			i++;
+		else if (src[i] == '-' && (src[i + 1] >= '0' || src[i + 1] <= '9'))
+			i++;
+		else if (src[i] == '+' && (src[i + 1] >= '0' && src[i + 1] <= '9'))
+			i++;
+		else if (src[i] == ' ' && src[i + 1] != ' ' && src[i + 1] != '\0')
 			i++;
 		else
 			return (0);
@@ -81,24 +72,26 @@ int	ft_verif_int(char *src)
 	return (1);
 }
 
-int	ft_verif_first(int *src, int len)
+int	ft_atol(char *s, char c)
 {
-	if (len == 1)
-		return (0);
-	if (src[0] >= src[len])
+	long	num;
+	int		i;
+	int		mult;
+
+	mult = 1;
+	num = 0;
+	i = 0;
+	if (s[0] == '-')
+		mult = -1;
+	if (s[0] == '-' || s[0] == '+')
+		i++;
+	while (s[i] && s[i] != c)
 	{
-		if (src[0] > src[len]
-			&& (len > 3 && src[len] < src[len - 1]))
-			return (-1);
-		else if (src[0] > src[len])
-			return (1);
-		else if (src[0] == src[len])
-		{
-			if (src[len] > src[len - 1])
-				return (1);
-			else
-				return (-1);
-		}
+		num = num * 10 + (s[i] - '0');
+		i++;
 	}
-	return (0);
+	num *= mult;
+	if (num > -2147483649 && 2147483648 > num)
+		return (0);
+	return (1);
 }

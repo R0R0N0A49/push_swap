@@ -12,36 +12,22 @@
 
 #include "push_swap.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+void	ft_loop(char **rsl, char *s2, int *i, int *j)
 {
-	char	*rsl;
-	int		j;
-	int		i;
-
-	j = 0;
-	i = 0;
-	rsl = malloc((ft_strlen(s1) + ft_strlen(s2) + 2) * sizeof(char));
-	if (rsl == 0)
-		return (0);
-	while ((s1 && s1[i]))
+	if (s2[0] == ' ' && (s2[1] >= '0' && s2[1] <= '9'))
 	{
-		rsl[i] = s1[i];
-		i++;
+		i[0]--;
+		j[0]++;
 	}
-	while (s2 && s2[j])
+	while (s2 && s2[j[0]])
 	{
-		rsl[i + j] = s2[j];
-		j++;
+		if (s2[j[0]] == ' ' && s2[j[0] + 1] == ' ')
+		{
+			i[0]--;
+			j[0]++;
+		}
+		else
+			rsl[0][i[0] + j[0]] = s2[j[0]];
+		j[0]++;
 	}
-	rsl[i + j] = ' ';
-	rsl[i + j + 1] = '\0';
-	if (s1)
-		free(s1);
-	return (rsl);
-}
-
-void	error(char *src)
-{
-	write (2, "Error\n", 6);
-	free(src);
 }

@@ -12,13 +12,21 @@
 
 #include "push_swap.h"
 
-int	*ft_swap(int *src, char c)
+void	ft_swap(int **src, char c)
 {
 	int	tmp;
 
-	tmp = src[0];
-	src[0] = src[1];
-	src[1] = tmp;
-	ft_printf("s%c\n", c);
-	return (src);
+	tmp = *src[0];
+	*src[0] = *src[1];
+	*src[1] = tmp;
+	if (c != '\0')
+		ft_printf("s%c\n", c);
+}
+
+void	ft_ss(int **tab_a, int **tab_b)
+{
+	ft_swap(&tab_a[0], '\0');
+	ft_swap(&tab_b[0], '\0');
+	ft_printf("ss\n");
+	return ;
 }

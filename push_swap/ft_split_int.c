@@ -51,31 +51,43 @@ static int	ft_strdup_mod(char *s, char chr)
 	return (ft_atoi(tmp));
 }
 
-int	*ft_split(char *s, char c, int *len)
+static int	loop(int **tab, char *s, char c)
 {
-	int	i;
 	int	j;
-	int	*tab;
+	int	i;
 
 	i = 0;
 	j = 0;
-	*len = ft_count(s, c);
-	if (!s)
-		return (0);
-	tab = malloc((*len) * sizeof(int));
-	if (!tab)
-		return (0);
 	while (s[i])
 	{
 		while (s[i] && s[i] == c)
 			i++;
 		if (s[i] && s[i] != c)
 		{
-			tab[j++] = ft_strdup_mod(&s[i], c);
+			if (ft_atol(&s[i], c))
+				return (1);
+			tab[0][j++] = ft_strdup_mod(&s[i], c);
 			while (s[i] && s[i] != c)
 				i++;
 		}
 	}
+	return (0);
+}
+
+int	*ft_split(char *s, char c, int *len)
+{
+	int	i;
+	int	*tab;
+
+	i = 0;
+	*len = ft_count(s, c);
+	if (!s)
+		return (0);
+	tab = malloc((*len) * sizeof(int));
+	if (!tab)
+		return (0);
+	if (loop(&tab, s, c))
+		return (0);
 	free(s);
 	return (tab);
 }
