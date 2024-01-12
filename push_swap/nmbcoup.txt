@@ -1,9 +1,0 @@
-de base :
-	- pour 10  --> entre 50 et 100
-	- pour 50  --> entre 1 200 et 1 900
-	- pour 100 --> entre 5 400 et 6 500
-	- pour 500 --> entre 280 000 et 400 000
-
-apres :
-	- pour 10 --> entre 20 et 70 (sans buterfly)
-	- pour 50 --> entre 1 200 et 1 700 (sans buterfly)
