@@ -119,14 +119,13 @@ int	main(int argc, char **argv)
 		while (i < argc)
 			str = ft_strjoin(str, argv[i++]);
 		j = ft_verif_int(str);
-		tab_a = ft_split(str, ' ', &i);
+		tab_a = ft_split(&str, ' ', &i);
 		if (j == 1 || tab_a == NULL || ft_verif_repeat(tab_a, i))
-		{
 			error(tab_a);
-			return (0);
-		}
-		if (!ft_order(tab_a, i) && i > 1)
+		else if (!ft_order(tab_a, i) && i > 1)
 			call_fonction(tab_a, tab_b, i);
+		else
+			free(tab_a);
 	}
 	return (0);
 }

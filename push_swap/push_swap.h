@@ -23,7 +23,7 @@ void	ft_rotate(int **src, char c, int len);
 void	ft_reverse(int **src, char c, int len);
 void	ft_rr(int **tab_a, int **tab_b, int len_a, int len_b);
 void	ft_rrr(int **tab_a, int **tab_b, int len_a, int len_b);
-int		*ft_split(char *s, char c, int *len);
+int		*ft_split(char **s, char c, int *len);
 void	ft_malloc_push(int **src, int len);
 long	ft_atoi(char *src);
 int		ft_locate_max(int *tab_b, int len);

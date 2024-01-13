@@ -74,20 +74,24 @@ static int	loop(int **tab, char *s, char c)
 	return (0);
 }
 
-int	*ft_split(char *s, char c, int *len)
+int	*ft_split(char **s, char c, int *len)
 {
 	int	i;
 	int	*tab;
 
 	i = 0;
-	*len = ft_count(s, c);
+	*len = ft_count(s[0], c);
 	if (!s)
 		return (0);
 	tab = malloc((*len) * sizeof(int));
 	if (!tab)
 		return (0);
-	if (loop(&tab, s, c))
+	if (loop(&tab, s[0], c))
+	{
+		free(tab);
+		free(s[0]);
 		return (0);
-	free(s);
+	}
+	free(s[0]);
 	return (tab);
 }
